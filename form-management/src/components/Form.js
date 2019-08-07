@@ -10,11 +10,11 @@ const UserForm = ({errors, touched, values}) => {
       <Field type="email" name="email" placeholder="email"/>
       <Field type="password" name="password" placeholder="password"/>
       <label>
-          Terms Of Use
+          Terms Of Service
           <Field
             type="checkbox"
-            name="termsOfUse"
-            checked={values.termsOfUse}
+            name="termsOfService"
+            checked={values.termsOfService}
           />
         <span className="checkmark"/>
       </label>
@@ -29,7 +29,7 @@ const FormikUserForm = withFormik({
       name: values.name || "",
       email: values.email || "",
       password: values.password || "",
-      termsOfUse: values.termsOfUse || false,
+      termsOfService: values.termsOfService || false,
 
     };
   },
@@ -38,10 +38,10 @@ const FormikUserForm = withFormik({
     name: Yup.string().required(),
     email: Yup.string().required(),
     password: Yup.string().required(),
-    termsOfUse: Yup.required()
   }),
 
   handleSubmit(values) {
+    console.log("submit", values)
 
   }
 })(UserForm);
