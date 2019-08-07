@@ -7,7 +7,13 @@ const UserForm = ({errors, touched, values}) => {
   return(
     <Form>
       <Field type="text" name="name" placeholder="name"/>
+      {touched.name && errors.name && (
+          <p className="error">{errors.name}</p>
+        )}
       <Field type="email" name="email" placeholder="email"/>
+      {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+        )}
       <Field type="password" name="password" placeholder="password"/>
       <label>
           Terms Of Service
@@ -16,7 +22,7 @@ const UserForm = ({errors, touched, values}) => {
             name="termsOfService"
             checked={values.termsOfService}
           />
-        <span className="checkmark"/>
+        <span />
       </label>
       <button type="submit">Submit</button>
     </Form>
