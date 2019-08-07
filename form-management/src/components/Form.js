@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const UserForm = ({errors, touched}) => {
+const UserForm = ({errors, touched, values}) => {
   return(
     <Form>
       <Field type="text" name="name" placeholder="name"/>
@@ -14,6 +14,7 @@ const UserForm = ({errors, touched}) => {
           <Field
             type="checkbox"
             name="termsOfUse"
+            checked={values.termsOfUse}
           />
         <span className="checkmark"/>
       </label>
@@ -34,7 +35,10 @@ const FormikUserForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-  
+    name: Yup.string().required(),
+    email: Yup.string().required(),
+    password: Yup.string().required(),
+    termsOfUse: Yup.required()
   }),
 
   handleSubmit(values) {
